@@ -1,3 +1,3 @@
-Project name : TextAnalyzer
-Authors : Patryk Buszman, Jakub Malesa, Karol Główka
-Project Description : Project write for pass exam 
+Project name : TextAnalyzer \n
+Authors : Patryk Buszman, Jakub Malesa, Karol Główka \n
+Project Description : Project write for pass exam for 6. \n 
