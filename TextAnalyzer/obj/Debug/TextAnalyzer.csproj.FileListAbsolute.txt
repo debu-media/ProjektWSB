@@ -1,0 +1,6 @@
+C:\Users\males\Desktop\ProjektWSB\TextAnalyzer\bin\Debug\TextAnalyzer.exe.config
+C:\Users\males\Desktop\ProjektWSB\TextAnalyzer\bin\Debug\TextAnalyzer.exe
+C:\Users\males\Desktop\ProjektWSB\TextAnalyzer\bin\Debug\TextAnalyzer.pdb
+C:\Users\males\Desktop\ProjektWSB\TextAnalyzer\obj\Debug\TextAnalyzer.csprojAssemblyReference.cache
+C:\Users\males\Desktop\ProjektWSB\TextAnalyzer\obj\Debug\TextAnalyzer.exe
+C:\Users\males\Desktop\ProjektWSB\TextAnalyzer\obj\Debug\TextAnalyzer.pdb
