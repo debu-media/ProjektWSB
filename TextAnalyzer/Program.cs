@@ -15,7 +15,7 @@ namespace TextAnalyzer
         {
             int Program_run = 1;
             GetMenu();
-           int  Menu_option = Convert.ToInt32(Console.ReadLine());
+            int Menu_option = Convert.ToInt32(Console.ReadLine());
             string Text = "Null";
             while (Program_run == 1)
             {
@@ -29,13 +29,26 @@ namespace TextAnalyzer
                     case 2:
                         if (Text != "Null")
                         {
-                          int  SumOfLetters = CountLetters(Text);
-                            Console.WriteLine("Liczba liter w pliku: " + SumOfLetters);
-                        }else
+                            int SumOfLetters = CountLetters(Text);
+                            Console.WriteLine("Number of letters in the file: " + SumOfLetters);
+                        }
+                        else
                         {
                             Console.WriteLine("Sorry, the file does not exist. \n \n Choose option no. 1 and try again \n\n");
                         }
-                        
+                        GetMenu();
+                        Menu_option = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    case 3:
+                        if (Text != "Null")
+                        {
+                            int SumOfWords = CountWords(Text);
+                            Console.WriteLine("Number of words in the file: " + SumOfWords);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, the file does not exist. \n \n Choose option no. 1 and try again \n\n");
+                        }
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
@@ -73,6 +86,28 @@ namespace TextAnalyzer
         {
             int CountLetters = text.Count(char.IsLetter);
             return CountLetters;
+        }
+
+        public static int CountWords(String text)
+        {
+            string s = text;
+            int c = 0;
+            for (int i = 1; i < s.Length; i++)
+            {
+                if (char.IsWhiteSpace(s[i - 1]) == true)
+                {
+                    if (char.IsLetterOrDigit(s[i]) == true ||
+                        char.IsPunctuation(s[i]))
+                    {
+                        c++;
+                    }
+                }
+            }
+            if (s.Length > 2)
+            {
+                c++;
+            }
+            return c;
         }
 
     }
