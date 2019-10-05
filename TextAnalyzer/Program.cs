@@ -16,17 +16,31 @@ namespace TextAnalyzer
             int Program_run = 1;
             GetMenu();
            int  Menu_option = Convert.ToInt32(Console.ReadLine());
+            string Text = "Null";
             while (Program_run == 1)
             {
                 switch (Menu_option)
                 {
                     case 1:
-                       string Text = GetFileFromInternet();
+                        Text = GetFileFromInternet();
+                        GetMenu();
+                        Menu_option = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    case 2:
+                        if (Text != "Null")
+                        {
+                          int  SumOfLetters = CountLetters(Text);
+                            Console.WriteLine("Liczba liter w pliku: " + SumOfLetters);
+                        }else
+                        {
+                            Console.WriteLine("Sorry, the file does not exist. \n \n Choose option no. 1 and try again \n\n");
+                        }
+                        
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
                     default:
-                        Console.WriteLine("Musisz wybrać opcję \n");
+                        Console.WriteLine("You must select an option from the menu \n");
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
@@ -53,6 +67,12 @@ namespace TextAnalyzer
             string text = System.IO.File.ReadAllText(@"stringfile.txt");
             File.Delete("stringfile.txt");
             return text;
+        }
+
+        public static int CountLetters(String text)
+        {
+            int CountLetters = text.Count(char.IsLetter);
+            return CountLetters;
         }
 
     }
