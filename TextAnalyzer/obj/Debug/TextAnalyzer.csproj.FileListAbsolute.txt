@@ -11,3 +11,10 @@ D:\Projekty\TextAnalyzer\TextAnalyzer\obj\Debug\TextAnalyzer.pdb
 D:\Projekty\TextAnalyzer\TextAnalyzer\bin\Debug\TextAnalyzer.exe.config
 D:\Projekty\TextAnalyzer\TextAnalyzer\bin\Debug\TextAnalyzer.exe
 D:\Projekty\TextAnalyzer\TextAnalyzer\bin\Debug\TextAnalyzer.pdb
+C:\pro\ProjektWSB\TextAnalyzer\bin\Debug\TextAnalyzer.exe.config
+C:\pro\ProjektWSB\TextAnalyzer\bin\Debug\TextAnalyzer.exe
+C:\pro\ProjektWSB\TextAnalyzer\bin\Debug\TextAnalyzer.pdb
+C:\pro\ProjektWSB\TextAnalyzer\obj\Debug\TextAnalyzer.csprojAssemblyReference.cache
+C:\pro\ProjektWSB\TextAnalyzer\obj\Debug\TextAnalyzer.csproj.CoreCompileInputs.cache
+C:\pro\ProjektWSB\TextAnalyzer\obj\Debug\TextAnalyzer.exe
+C:\pro\ProjektWSB\TextAnalyzer\obj\Debug\TextAnalyzer.pdb
