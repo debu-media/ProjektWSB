@@ -93,6 +93,11 @@ namespace TextAnalyzer
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         
                         break;
+                    case 7:
+                        SaveStatistic();
+                        GetMenu();
+                        Menu_option = Convert.ToInt32(Console.ReadLine());
+                        break;
                     default:
                         Console.WriteLine("You must select an option from the menu \n");
                         GetMenu();
@@ -322,5 +327,27 @@ namespace TextAnalyzer
             Console.WriteLine("Z: " + Z);
 
         }
+        public static void SaveStatistic()
+        {
+            string match;
+            string Text = GetFileFromInternet();
+            int SumOfLetters = CountLetters(Text);
+            int SumOfWords = CountWords(Text);
+            int SumOfPunctationMarks = CountpunctuationmarksLetters(Text);
+            int SumOfSentences = CountSentences(Text);
+            match = "Number of letters in the file: " + SumOfLetters + "\n" + "Number of words in the file: " + SumOfWords + "\n" + "Number of Puntactionsmark in the file: " + SumOfPunctationMarks + "\n" + "Number of Sentences in the file: " + SumOfSentences;
+            string path = @"statystyki.txt";
+            if (!File.Exists(path))
+            {
+                File.WriteAllText(path, match);
+            }
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+                File.WriteAllText(path, match);
+            }
+            Console.WriteLine("File saved successfully");
+        }
+
     }
 }
