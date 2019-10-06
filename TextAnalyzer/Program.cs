@@ -103,6 +103,10 @@ namespace TextAnalyzer
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
+                    case 8:
+                        Program_run = 0;
+                        ProgramExit();
+                        break;
                 }
 
             }
@@ -348,6 +352,19 @@ namespace TextAnalyzer
             }
             Console.WriteLine("File saved successfully");
         }
-
+        public static void ProgramExit()
+        {
+            string statystyki = @"statystyki.txt";
+            string stringfile = @"stringfile.txt";
+            if (File.Exists(statystyki))
+            {
+                File.Delete(statystyki);
+            }
+            if (File.Exists(stringfile))
+            {
+                File.Delete(stringfile);
+            }
+            Console.WriteLine("bye.");
+        }
     }
 }
