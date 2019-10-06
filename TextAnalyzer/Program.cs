@@ -65,6 +65,20 @@ namespace TextAnalyzer
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
+                    case 5:
+                        if (Text != "Null")
+                        {
+                            int SumOfSentences = CountSentences(Text);
+                            Console.WriteLine("Number of Sentences in the file: " + SumOfSentences);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, the file does not exist. \n \n Choose option no. 1 and try again \n\n");
+                        }
+                        GetMenu();
+                        Menu_option = Convert.ToInt32(Console.ReadLine());
+
+                        break;
                     default:
                         Console.WriteLine("You must select an option from the menu \n");
                         GetMenu();
@@ -127,6 +141,11 @@ namespace TextAnalyzer
             int CountOfPunctuationMarksLetters = text.Count(char.IsPunctuation);
             return CountOfPunctuationMarksLetters;
         }
-
+        public static int CountSentences(String text)
+        {
+            var translateArraySourceTexts = text.Split(new string[] { ".", "!?", "!", "?", "...", "?!", ".!" }, StringSplitOptions.RemoveEmptyEntries);
+            var count = translateArraySourceTexts.Length;
+            return count;
+        }
     }
 }
