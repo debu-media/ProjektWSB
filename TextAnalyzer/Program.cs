@@ -52,6 +52,19 @@ namespace TextAnalyzer
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
+                    case 4:
+                        if (Text != "Null")
+                        {
+                            int SumOfPunctationMarks = CountpunctuationmarksLetters(Text);
+                            Console.WriteLine("Number of Puntactionsmark in the file: " + SumOfPunctationMarks);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, the file does not exist. \n \n Choose option no. 1 and try again \n\n");
+                        }
+                        GetMenu();
+                        Menu_option = Convert.ToInt32(Console.ReadLine());
+                        break;
                     default:
                         Console.WriteLine("You must select an option from the menu \n");
                         GetMenu();
@@ -108,6 +121,11 @@ namespace TextAnalyzer
                 c++;
             }
             return c;
+        }
+        public static int CountpunctuationmarksLetters(String text)
+        {
+            int CountOfPunctuationMarksLetters = text.Count(char.IsPunctuation);
+            return CountOfPunctuationMarksLetters;
         }
 
     }
