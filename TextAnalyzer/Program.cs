@@ -402,7 +402,12 @@ namespace TextAnalyzer
             Console.WriteLine("X: " + X);
             Console.WriteLine("Y: " + Y);
             Console.WriteLine("Z: " + Z);
-
+            Console.WriteLine("Sentences:");
+            Console.WriteLine(CountSentences(text));
+            Console.WriteLine("Words:");
+            Console.WriteLine(CountWords(text));
+            Console.WriteLine("Letters:");
+            Console.WriteLine(CountLetters(text));
         }
         public static void SaveStatistic(string adres)
         {
