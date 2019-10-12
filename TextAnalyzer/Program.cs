@@ -18,12 +18,26 @@ namespace TextAnalyzer
             GetMenu();
             int Menu_option = Convert.ToInt32(Console.ReadLine());
             string Text = "Null";
+            string adres = "Null";
             while (Program_run == 1)
             {
                 switch (Menu_option)
                 {
                     case 1:
-                        Text = GetFileFromInternet();
+                        Console.WriteLine("Get file from internet? T/N");
+                        String odp = Console.ReadLine();
+                        if (odp == "T" || odp == "t")
+                        {
+                            Console.WriteLine("Give a adress");
+                            adres = Console.ReadLine();
+                            Text = GetFileFromInternet(adres);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Give adress from local stoarge:");
+                            adres = Console.ReadLine();
+                            GetFileFromInternet(adres);
+                        }
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
@@ -91,10 +105,10 @@ namespace TextAnalyzer
                         }
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
-                        
+
                         break;
                     case 7:
-                        SaveStatistic();
+                        SaveStatistic(adres);
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
                         break;
@@ -114,7 +128,7 @@ namespace TextAnalyzer
         static void GetMenu()
         {
             Console.WriteLine("   Menu \n==========\n");
-            Console.WriteLine("1 - Get file from internet");
+            Console.WriteLine("1 - Chose input file");
             Console.WriteLine("2 - Count letters");
             Console.WriteLine("3 - Count words");
             Console.WriteLine("4 - Count punctuation marks");
@@ -123,13 +137,29 @@ namespace TextAnalyzer
             Console.WriteLine("7 - Save statistics to the file");
             Console.WriteLine("8 - Exit");
         }
-        public static String GetFileFromInternet()
+        public static String GetFileFromInternet(String adres)
         {
+            
             WebClient webClient = new WebClient();
-            webClient.DownloadFile("https://s3.zylowski.net/public/input/1.txt", @"stringfile.txt");
-            string text = System.IO.File.ReadAllText(@"stringfile.txt");
-            File.Delete("stringfile.txt");
+            string text = "Null";
+            try
+            {
+                webClient.DownloadFile(adres, @"stringfile.txt");
+                text = System.IO.File.ReadAllText(@"stringfile.txt");
+                File.Delete("stringfile.txt");
+               
+               
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Nie udalo sie otworzyc pliku wejsciowego");
+                GetMenu();
+                
+            }
+           
             return text;
+
+
         }
 
         public static int CountLetters(String text)
@@ -170,10 +200,10 @@ namespace TextAnalyzer
             var count = translateArraySourceTexts.Length;
             return count;
         }
-            public static void  GenerateRaport(string text)
+        public static void GenerateRaport(string text)
         {
             string pattern = @"[Aa]";
-            int A=0, B=0, C=0, D=0, E=0, F=0,G=0, H=0, I=0, J=0, K=0, L=0, M=0, N=0, O=0, P=0, Q=0, R=0, S=0, T=0, U=0, V=0, W=0, X=0, Y=0, Z=0;
+            int A = 0, B = 0, C = 0, D = 0, E = 0, F = 0, G = 0, H = 0, I = 0, J = 0, K = 0, L = 0, M = 0, N = 0, O = 0, P = 0, Q = 0, R = 0, S = 0, T = 0, U = 0, V = 0, W = 0, X = 0, Y = 0, Z = 0;
             Regex rg = new Regex(pattern);
             MatchCollection matchedA = rg.Matches(text);
             for (int count = 0; count < matchedA.Count; count++)
@@ -331,26 +361,31 @@ namespace TextAnalyzer
             Console.WriteLine("Z: " + Z);
 
         }
-        public static void SaveStatistic()
+        public static void SaveStatistic(string adres)
         {
             string match;
-            string Text = GetFileFromInternet();
-            int SumOfLetters = CountLetters(Text);
-            int SumOfWords = CountWords(Text);
-            int SumOfPunctationMarks = CountpunctuationmarksLetters(Text);
-            int SumOfSentences = CountSentences(Text);
-            match = "Number of letters in the file: " + SumOfLetters + "\n" + "Number of words in the file: " + SumOfWords + "\n" + "Number of Puntactionsmark in the file: " + SumOfPunctationMarks + "\n" + "Number of Sentences in the file: " + SumOfSentences;
-            string path = @"statystyki.txt";
-            if (!File.Exists(path))
+           
+            if (adres!="Null")
             {
-                File.WriteAllText(path, match);
+                string Text = GetFileFromInternet(adres);
+                int SumOfLetters = CountLetters(Text);
+                int SumOfWords = CountWords(Text);
+                int SumOfPunctationMarks = CountpunctuationmarksLetters(Text);
+                int SumOfSentences = CountSentences(Text);
+                match = "Number of letters in the file: " + SumOfLetters + "\n" + "Number of words in the file: " + SumOfWords + "\n" + "Number of Puntactionsmark in the file: " + SumOfPunctationMarks + "\n" + "Number of Sentences in the file: " + SumOfSentences;
+                string path = @"statystyki.txt";
+                if (!File.Exists(path))
+                {
+                    File.WriteAllText(path, match);
+                }
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                    File.WriteAllText(path, match);
+                }
+                Console.WriteLine("File saved successfully");
             }
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-                File.WriteAllText(path, match);
-            }
-            Console.WriteLine("File saved successfully");
+            
         }
         public static void ProgramExit()
         {
