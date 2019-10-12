@@ -36,7 +36,7 @@ namespace TextAnalyzer
                         {
                             Console.WriteLine("Give adress from local stoarge:");
                             adres = Console.ReadLine();
-                            GetFileFromInternet(adres);
+                            Text=GetFileFromInternet(adres);
                         }
                         GetMenu();
                         Menu_option = Convert.ToInt32(Console.ReadLine());
@@ -212,7 +212,11 @@ namespace TextAnalyzer
                     if (char.IsLetterOrDigit(s[i]) == true ||
                         char.IsPunctuation(s[i]))
                     {
-                        c++;
+                        if(!(char.IsLetter(s[i])))
+                        {
+                            c++;
+                        }
+                        
                     }
                 }
             }
