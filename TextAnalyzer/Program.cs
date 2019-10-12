@@ -44,8 +44,8 @@ namespace TextAnalyzer
                     case 2:
                         if (Text != "Null")
                         {
-                            int SumOfLetters = CountLetters(Text);
-                            Console.WriteLine("Number of letters in the file: " + SumOfLetters);
+                            string SumOfLetters = CountLetters(Text);
+                            Console.WriteLine(SumOfLetters);
                         }
                         else
                         {
@@ -162,10 +162,43 @@ namespace TextAnalyzer
 
         }
 
-        public static int CountLetters(String text)
+        public static string CountLetters(String text)
         {
             int CountLetters = text.Count(char.IsLetter);
-            return CountLetters;
+
+
+            int vowels = 0;
+            int consonant = 0;
+            int space = 0;
+
+            Console.WriteLine("Enter a Sentence or a Character");
+            string v = text;
+
+            for (int i = 0; i < v.Length; i++)
+            {
+                if (v[i] == 'a' || v[i] == 'e' || v[i] == 'i' || v[i] == 'o' || v[i] == 'u' || v[i] == 'A' || v[i] == 'E' || v[i] == 'I' || v[i] == 'O' || v[i] == 'U')
+                {
+                    vowels++;
+                }
+
+                else if (char.IsWhiteSpace(v[i]))
+
+                {
+                    space++;
+                }
+
+                else
+                {
+                    consonant++;
+                }
+            }
+
+            Console.WriteLine("Your total number of vowels is: {0}", vowels);
+            Console.WriteLine("Your total number of constant is: {0}", consonant);
+            Console.WriteLine("Your total number of space is: {0}", space);
+            string count = "Your total number of vowels is: " + vowels + " Your total number of constant is: " + consonant + " Your total number of space is: " + space;
+            return count;
+
         }
 
         public static int CountWords(String text)
@@ -368,7 +401,7 @@ namespace TextAnalyzer
             if (adres!="Null")
             {
                 string Text = GetFileFromInternet(adres);
-                int SumOfLetters = CountLetters(Text);
+                string SumOfLetters = CountLetters(Text);
                 int SumOfWords = CountWords(Text);
                 int SumOfPunctationMarks = CountpunctuationmarksLetters(Text);
                 int SumOfSentences = CountSentences(Text);
