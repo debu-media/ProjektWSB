@@ -228,7 +228,13 @@ namespace TextAnalyzer
         }
         public static int CountpunctuationmarksLetters(String text)
         {
-            int CountOfPunctuationMarksLetters = text.Count(char.IsPunctuation);
+            int CountOfPunctuationMarksLetters = 0;
+
+            string pattern = @"[.?]";
+            Regex rg = new Regex(pattern);
+            MatchCollection matchedR = rg.Matches(text);
+            for (int count = 0; count < matchedR.Count; count++)
+                CountOfPunctuationMarksLetters++;
             return CountOfPunctuationMarksLetters;
         }
         public static int CountSentences(String text)
