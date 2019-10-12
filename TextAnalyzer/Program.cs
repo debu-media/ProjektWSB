@@ -239,7 +239,7 @@ namespace TextAnalyzer
         }
         public static int CountSentences(String text)
         {
-            var translateArraySourceTexts = text.Split(new string[] { ".", "!?", "!", "?", "...", "?!", ".!" }, StringSplitOptions.RemoveEmptyEntries);
+            var translateArraySourceTexts = text.Split(new string[] { ".", "?" }, StringSplitOptions.RemoveEmptyEntries);
             var count = translateArraySourceTexts.Length;
             return count;
         }
